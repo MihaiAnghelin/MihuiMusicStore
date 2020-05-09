@@ -15,7 +15,7 @@ namespace MusicStore.Models
         {
         }
 
-        public virtual DbSet<Guitar> Guitar { get; set; }
+        public virtual DbSet<Item> Item { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,15 +28,45 @@ namespace MusicStore.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Guitar>(entity =>
+            modelBuilder.Entity<Item>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnType("int(11)");
 
-                entity.Property(e => e.Description).HasColumnType("varchar(45)");
+                entity.Property(e => e.Availability)
+                    .IsRequired()
+                    .HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(1000)");
+
+                entity.Property(e => e.Doze).HasColumnType("varchar(150)");
+
+                entity.Property(e => e.Finisaj).HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Forma).HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Material).HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Model).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasColumnType("varchar(45)");
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.NumarTaste).HasColumnType("int(11)");
+
+                entity.Property(e => e.Photo).HasColumnType("varchar(200)");
+
+                entity.Property(e => e.ReviewNumber)
+                    .HasColumnName("Review Number")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Serie).HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Stars).HasColumnType("int(11)");
+
+                entity.Property(e => e.Type).HasColumnType("int(11)");
             });
         }
     }

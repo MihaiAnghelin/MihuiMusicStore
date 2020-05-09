@@ -1,0 +1,113 @@
+﻿@model ItemViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create_Post" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control" required>
+                    <option value="">Tip Produs</option>
+                    <option value="0">Chitara electrica</option>
+                    <option value="1">Chitara acustica</option>
+                    <option value="2">Chitara clasica</option>
+                    <option value="3">Bass</option>
+                    <option value="4">Amplificator chitara electrica</option>
+                    <option value="5">Amplificator bass</option>
+                    <option value="6">Tobe</option>
+                    <option value="7">Pian, Clape</option>
+                    <option value="8">Efecte chitara electrica</option>
+                    <option value="9">Efecte chitara bass</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" required />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" required />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Availability" class="control-label"></label>
+                <input asp-for="Availability" class="form-control" required />
+                <span asp-validation-for="Availability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label">Photo(optional)</label>
+                <input asp-for="Photo" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReviewNumber" class="control-label"></label>
+                <input asp-for="ReviewNumber" custom-file-input class="form-control" required />
+                <span asp-validation-for="ReviewNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stars" class="control-label"></label>
+                <input asp-for="Stars" class="form-control" required />
+                <span asp-validation-for="Stars" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label">Model(optional)</label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serie" class="control-label">Serie(optional)</label>
+                <input asp-for="Serie" class="form-control" />
+                <span asp-validation-for="Serie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forma" class="control-label">Forma(optional)</label>
+                <input asp-for="Forma" class="form-control" />
+                <span asp-validation-for="Forma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Material" class="control-label">Material(optional)</label>
+                <input asp-for="Material" class="form-control" />
+                <span asp-validation-for="Material" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finisaj" class="control-label">Finisaj(optional)</label>
+                <input asp-for="Finisaj" class="form-control" />
+                <span asp-validation-for="Finisaj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumarTaste" class="control-label">NumarTaste(optional)</label>
+                <input asp-for="NumarTaste" class="form-control" />
+                <span asp-validation-for="NumarTaste" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doze" class="control-label">Doze(optional)</label>
+                <input asp-for="Doze" class="form-control" />
+                <span asp-validation-for="Doze" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ViewAll">Back to List</a>
+</div>
+

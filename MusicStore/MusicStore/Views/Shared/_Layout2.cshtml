@@ -41,7 +41,7 @@
                         <ul>
                             <li class="active"><a asp-action="Index">Acasă</a></li>
                             <li><a asp-action="ShopGrid" asp-route-id="">Shop</a></li>
-                            <li><a asp-action="Contact">Contact</a></li>
+                            <li><a href="#">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -62,7 +62,7 @@
     </header>
     <!--#endregion Header Section End -->
     <!--#region Hero Section Begin -->
-    <section class="hero">
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -99,16 +99,8 @@
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>0720 720 720</h5>
-                                <span>asistență 24/7</span>
+                                <span>asistență 24/7 </span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="/img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>Mihui Music Store</span>
-                            <h2>Instrumente <br />Muzicale</h2>
-                            <p>Livrare <span>GRATUITĂ</span><br />la comenzi de peste 500 de lei</p>
-                            @*<a href="#" class="primary-btn">SHOP NOW</a>*@
                         </div>
                     </div>
                 </div>
@@ -116,6 +108,7 @@
         </div>
     </section>
     <!--#endregion Hero Section End -->
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

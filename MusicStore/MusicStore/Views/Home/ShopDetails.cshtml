@@ -1,0 +1,124 @@
+﻿@model Item
+@{
+    ViewData["Title"] = "ShopDetails";
+    Layout = "_Layout2";
+}
+
+
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    @if (Model.Photo is null)
+                    {
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                 src="~/img/product/details/product-details-1.jpg" alt="">
+                        </div>
+                    }
+                    else
+                    {
+                        string photo = "/uploaded-images/" + Model.Photo;
+
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                 src="@photo" alt="">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.Name</h3>
+                    <div class="product__details__rating">
+                        @{
+                            int stars;
+                            for (stars = 1; stars <= Model.Stars; stars++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                            for (int i = stars; i <= 5; i++)
+                            {
+                                <i class="fa fa-star-o"></i>
+                            }
+                        }
+                        <span>(@Model.ReviewNumber recenzii)</span>
+                    </div>
+                    @if (Model.Sale != null)
+                    {
+                        <div class="product__details__price">
+                            @(Model.Price - Model.Price * Model.Sale) RON
+                            <span style="text-decoration: line-through; font-size: 20px; color: gray;">@Model.Price RON</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="product__details__price">@Model.Price RON</div>
+                    }
+
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <input type="text" value="1">
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="primary-btn">ADAUGĂ ÎN COȘ</a>
+                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <ul>
+                        @if (Model.Availability != null)
+                        {
+                            <li><b>Disponibilitate</b> <span>@Model.Availability</span></li>
+                        }
+                        @if (Model.Model != null)
+                        {
+                            <li><b>Model</b> <span>@Model.Model</span></li>
+                        }
+                        @if (Model.Serie != null)
+                        {
+                            <li><b>Serie</b> <span>@Model.Serie</span></li>
+                        }
+                        @if (Model.Material != null)
+                        {
+                            <li><b>Material</b> <span>@Model.Material</span></li>
+                        }
+                        @if (Model.Finisaj != null)
+                        {
+                            <li><b>Finisaj</b> <span>@Model.Finisaj</span></li>
+                        }
+                        @if (Model.NumarTaste != null)
+                        {
+                            <li><b>Număr Taste</b> <span>@Model.NumarTaste</span></li>
+                        }
+                        @if (Model.Doze != null)
+                        {
+                            <li><b>Doze</b> <span>@Model.Doze</span></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                               aria-selected="true">Descriere</a>
+                        </li>
+
+
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <p>@Model.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->

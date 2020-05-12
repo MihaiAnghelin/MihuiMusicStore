@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage;
 using MusicStore.Models;
 
 namespace MusicStore.Controllers
@@ -24,6 +27,8 @@ namespace MusicStore.Controllers
 
     public class HomeController : Controller
     {
+        #region Variables & Constructor
+
         private readonly MusicStoreContext _context = new MusicStoreContext();
         private readonly IHostingEnvironment _hostingEnvironment;
 
@@ -32,11 +37,20 @@ namespace MusicStore.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        #endregion
+
         public IActionResult Index()
         {
             var items = _context.Item.ToList();
 
             return View(items);
+        }
+
+        public IActionResult ShopDetails(int id)
+        {
+            var item = _context.Item.First(c => c.Id == id);
+
+            return View(item);
         }
 
         public IActionResult Privacy()
@@ -53,6 +67,28 @@ namespace MusicStore.Controllers
         public IActionResult ViewAll()
         {
             var items = _context.Item.ToList();
+
+            return View(items);
+        }
+
+        public IActionResult ShopGrid(int? id, string name, string minamount, string maxamount)
+        {
+            var items = id == null ? _context.Item : _context.Item.Where(c => c.Type == id);
+
+            var compareInfo = CultureInfo.InvariantCulture.CompareInfo;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                items = items.Where(s =>
+                    compareInfo.IndexOf(s.Name, name,
+                        CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace) > -1);
+            }
+            
+            if (minamount != null && maxamount != null)
+            {
+                maxamount = maxamount.Replace("RON", "");
+                items = items.Where(s => s.Price >= int.Parse(minamount) && s.Price <= int.Parse(maxamount));
+            }
 
             return View(items);
         }
@@ -107,6 +143,11 @@ namespace MusicStore.Controllers
             _context.Item.Remove(item);
             _context.SaveChanges();
             return RedirectToAction("ViewAll");
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
         }
 
     }

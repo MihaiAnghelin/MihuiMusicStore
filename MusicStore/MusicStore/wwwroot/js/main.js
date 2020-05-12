@@ -1,26 +1,26 @@
 /*  ---------------------------------------------------
-    Template Name: Ogani
-    Description:  Ogani eCommerce  HTML Template
-    Author: Colorlib
-    Author URI: https://colorlib.com
-    Version: 1.0
-    Created: Colorlib
+	Template Name: Ogani
+	Description:  Ogani eCommerce  HTML Template
+	Author: Colorlib
+	Author URI: https://colorlib.com
+	Version: 1.0
+	Created: Colorlib
 ---------------------------------------------------------  */
 
 'use strict';
 
 (function ($) {
 
-    /*------------------
-        Preloader
-    --------------------*/
+	/*------------------
+		Preloader
+	--------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
-        /*------------------
-            Gallery filter
-        --------------------*/
+		/*------------------
+			Gallery filter
+		--------------------*/
         $('.featured__controls li').on('click', function () {
             $('.featured__controls li').removeClass('active');
             $(this).addClass('active');
@@ -31,9 +31,9 @@
         }
     });
 
-    /*------------------
-        Background Set
-    --------------------*/
+	/*------------------
+		Background Set
+	--------------------*/
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
@@ -52,7 +52,7 @@
         $("body").removeClass("over_hid");
     });
 
-    /*------------------
+	/*------------------
 		Navigation
 	--------------------*/
     $(".mobile-menu").slicknav({
@@ -60,9 +60,9 @@
         allowParentLinks: true
     });
 
-    /*-----------------------
-        Categories Slider
-    ------------------------*/
+	/*-----------------------
+		Categories Slider
+	------------------------*/
     $(".categories__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -96,13 +96,13 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
-    /*--------------------------
-        Latest Product Slider
-    ----------------------------*/
+	/*--------------------------
+		Latest Product Slider
+	----------------------------*/
     $(".latest-product__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -115,9 +115,9 @@
         autoplay: true
     });
 
-    /*-----------------------------
-        Product Discount Slider
-    -------------------------------*/
+	/*-----------------------------
+		Product Discount Slider
+	-------------------------------*/
     $(".product__discount__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -146,9 +146,9 @@
         }
     });
 
-    /*---------------------------------
-        Product Details Pic Slider
-    ----------------------------------*/
+	/*---------------------------------
+		Product Details Pic Slider
+	----------------------------------*/
     $(".product__details__pic__slider").owlCarousel({
         loop: true,
         margin: 20,
@@ -159,7 +159,7 @@
         autoplay: true
     });
 
-    /*-----------------------
+	/*-----------------------
 		Price Range Slider
 	------------------------ */
     var rangeSlider = $(".price-range"),
@@ -173,19 +173,20 @@
         max: maxPrice,
         values: [minPrice, maxPrice],
         slide: function (event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
+            minamount.val(/*'RON' +*/ ui.values[0]);
+            console.log(minamount.val);
+            maxamount.val(ui.values[1] + ' RON');
         }
     });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
+    minamount.val(rangeSlider.slider("values", 0));
+    maxamount.val(rangeSlider.slider("values", 1) + ' RON');
 
-    /*--------------------------
-        Select
-    ----------------------------*/
+	/*--------------------------
+		Select
+	----------------------------*/
     $("select").niceSelect();
 
-    /*------------------
+	/*------------------
 		Single Product
 	--------------------*/
     $('.product__details__pic__slider img').on('click', function () {
@@ -199,7 +200,7 @@
         }
     });
 
-    /*-------------------
+	/*-------------------
 		Quantity change
 	--------------------- */
     var proQty = $('.pro-qty');

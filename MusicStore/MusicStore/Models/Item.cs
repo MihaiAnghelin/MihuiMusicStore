@@ -21,5 +21,6 @@ namespace MusicStore.Models
         public int? NumarTaste { get; set; }
         public string Doze { get; set; }
         public int Type { get; set; }
+        public float? Sale { get; set; }
     }
 }
